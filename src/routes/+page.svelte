@@ -3,6 +3,21 @@
   import { gameState, resetGame, setBoardSize, toggleRenju } from '$lib/stores/game';
   import type { GameLogEntry, Winner } from '$lib/stores/game';
 
+  const features = [
+    {
+      title: 'Skeleton UI',
+      description: 'Preconfigured Skeleton UI components and themes for rapid UI prototyping in SvelteKit.'
+    },
+    {
+      title: 'Tailwind CSS',
+      description: 'Utility-first styling powered by Tailwind CSS and PostCSS integration.'
+    },
+    {
+      title: 'TypeScript Tooling',
+      description: 'Type-safe development environment with ESLint, Prettier, and Svelte Check scripts.'
+    }
+  ];
+
   const sizeOptions = [13, 15, 17, 19];
 
   let currentTurn: 'black' | 'white' = 'black';
@@ -40,9 +55,26 @@
 </script>
 
 <section class="page">
-  <header class="space-y-3 text-center">
-    <h1 class="text-3xl font-semibold">Gomoku</h1>
-    <p class="text-on-surface-variant">15×15 오목판에서 턴을 번갈아 돌을 두고 다섯 줄을 먼저 완성하세요.</p>
+  <header class="hero">
+    <div class="hero__intro space-y-3">
+      <h1 class="text-3xl font-semibold">Gomoku</h1>
+      <p class="text-on-surface-variant">
+        15×15 오목판에서 턴을 번갈아 돌을 두고 다섯 줄을 먼저 완성하세요. Skeleton UI와 Tailwind CSS로
+        구성된 SvelteKit 환경에서 전략을 실험해 보세요.
+      </p>
+    </div>
+
+    <div class="hero__features">
+      <h2 class="hero__features-title text-sm font-semibold uppercase tracking-wide">Built-in tooling</h2>
+      <ul class="hero__features-grid">
+        {#each features as feature}
+          <li class="hero__feature">
+            <h3 class="text-base font-semibold">{feature.title}</h3>
+            <p class="text-sm text-on-surface-variant">{feature.description}</p>
+          </li>
+        {/each}
+      </ul>
+    </div>
   </header>
 
   <div class="controls">
@@ -113,10 +145,39 @@
 <style>
   .page {
     display: grid;
-    gap: 1.5rem;
+    gap: 1.75rem;
     padding: clamp(1.5rem, 5vw, 3rem) clamp(1rem, 6vw, 3rem);
     max-width: 960px;
     margin: 0 auto;
+  }
+
+  .hero {
+    display: grid;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .hero__features {
+    border-radius: 0.75rem;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: rgba(255, 255, 255, 0.85);
+    padding: 1rem 1.25rem;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+  }
+
+  .hero__features-title {
+    color: var(--color-primary, #2563eb);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero__features-grid {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .hero__feature {
+    display: grid;
+    gap: 0.4rem;
   }
 
   .controls {
@@ -240,6 +301,13 @@
     color: #16a34a;
     font-weight: 600;
     margin-left: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .hero {
+      grid-template-columns: 1.1fr 1fr;
+      align-items: stretch;
+    }
   }
 
   @media (max-width: 600px) {
