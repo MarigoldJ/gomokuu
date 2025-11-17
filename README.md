@@ -2,6 +2,17 @@
 
 This project is a SvelteKit application configured with TypeScript, ESLint, Prettier, Tailwind CSS, and Skeleton UI.
 
+## Live Demo
+
+The latest build is available on GitHub Pages: https://<your-github-username>.github.io/gomokuu/
+
+## What You Can Do
+
+- Play a full Gomoku match on a 13×13, 15×15, 17×17, or 19×19 board.
+- Enable or disable Renju-style forbidden move rules with a single toggle.
+- Track the current turn, wins, draws, and forbidden move reasons at a glance.
+- Review every move in the running game log, including coordinates and notes.
+
 ## Available Scripts
 
 - `npm install` – install project dependencies.
